@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "seed": {
+      "description": "Schematic to generate new seed file",
+      "factory": "./schematics/seed/seed.factory#main",
+      "schema": "./schematics/seed/schema.json"
+    },
+    "factory": {
+      "description": "Schematic to generate new factory file",
+      "factory": "./schematics/factory/factory.factory#main",
+      "schema": "./schematics/factory/schema.json"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+import { ISeeder, Factory } from '@paranode/nestjs-typeorm-seeding';
+import { DataSource } from 'typeorm';
+
+export class <%= classify(fullName) %>Seed implements ISeeder {
+
+  async run(datasource: DataSource, factory: Factory) {
+    // seeder logic here
+  }
+}

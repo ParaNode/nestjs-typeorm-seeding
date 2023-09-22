@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "SeedFileSchema",
+  "title": "Seed file options schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "the name of the file including the path",
+      "default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "what name would you like to use for the file?"
+    }
+  },
+  "required": ["name"]
+}

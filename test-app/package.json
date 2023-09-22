@@ -18,15 +18,15 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "seed": "typeorm-seeding-ts-node-commonjs"
+    "create:seed": "nest g -c @paranode/nestjs-typeorm-seeding seed",
+    "create:factory": "nest g -c @paranode/nestjs-typeorm-seeding factory"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.0",
-    "@paranode/nestjs-typeorm-seeding": "file:../nestjs-typeorm-seeding",
-    "@paranode/typeorm-seeding": "^3.1.1",
+    "@paranode/nestjs-typeorm-seeding": "../nestjs-typeorm-seeding/build/package",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",

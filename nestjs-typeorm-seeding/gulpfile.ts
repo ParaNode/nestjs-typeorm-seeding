@@ -172,6 +172,26 @@ export class Gulpfile {
             .pipe(gulp.dest("./build/package"));
     }
 
+    /**
+     * Copies collection.json into the package 
+     */
+    @Task()
+    packageCopyCollection() {
+        return gulp.src('./collection.json')
+            .pipe(gulp.dest('./build/package'));
+    }
+
+    @Task()
+    packageCopySchematicsSchemas() {
+        return gulp.src('./src/schematics/**/*.json')
+            .pipe(gulp.dest('./build/package/schematics'))
+    }
+
+    @Task()
+    packageCopySchematicsTemplates() {
+        return gulp.src('./src/schematics/**/*.template')
+            .pipe(gulp.dest('./build/package/schematics'))
+    }
 
     /**
      * Creates a package that can be published to npm.
@@ -188,6 +208,9 @@ export class Gulpfile {
                 "packageReplaceReferences",
                 "packagePreparePackageFile",
                 "packageCopyReadme",
+                "packageCopyCollection",
+                "packageCopySchematicsSchemas",
+                "packageCopySchematicsTemplates"
             ],
         ];
     }

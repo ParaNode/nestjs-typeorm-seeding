@@ -16,35 +16,69 @@
 this package works with [@paranode/typeorm-seeding](https://www.npmjs.com/package/@paranode/typeorm-seeding) package
 </h4>
 
-### Installation
+# Installation
+
+### 1. install the library using either `npm` or `yarn` or your favourite package manager
 
 ```bash
 npm install @paranode/nestjs-typeorm-seeding
 ```
 
-import `TypeormSeedingModule` into your root module
+### 2. import `SeedingModule` into your root module or database module
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { DataSource } from 'typeorm';
-import { TypeOrmModule, getDataSourceToken } from '@nestjs/typeorm';
-import { TypeormSeedingModule } from '@paranode/nestjs-typeorm-seeding';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { SeedingModule } from '@paranode/nestjs-typeorm-seeding';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({...}),
-    TypeormSeedingModule.registerAsync({
-      useFactory: (datasource: DataSource) => ({
-        seeds: ['src/database/seeds/**/*.{ts,js}'],
-        datasource
-      }),
-      inject: [getDataSourceToken()],
-      imports: [TypeOrmModule.forFeature()]
+    SeedingModule.register({
+      seeders: [],
+      factories: [],
     })
   ]
 })
-export class AppModule{}
+export class DatabaseModule{}
 ```
+
+### _Optional step:_
+
+add these commands to your package.json scripts
+```json
+{
+  ...
+  "scripts": {
+    ...
+    "create:seed": "nest g -c @paranode/nestjs-typeorm-seeding seed",
+    "create:factory": "nest g -c @paranode/nestjs-typeorm-seeding factory",
+    ...
+  }
+  ...
+}
+```
+
+### 3. register your seed files and your factory files to the `SeederModule.register()` function
+
+```typescript
+...
+SeedingModule.register({
+  seeders: [
+    // NOTE: seeders will run the orders they're registered in
+    UserSeeder,
+    RoleSeeder,
+  ],
+  factories: [
+    UserFactory,
+    RoleFactory
+  ],
+})
+...
+```
+
+# Example app
+you can find a full example application on github [here](https://github.com/ParaNode/nestjs-typeorm-seeding/tree/master/test-app)
 
 ## Contributing
 

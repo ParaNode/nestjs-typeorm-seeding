@@ -1,4 +1,8 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*.ts","src/schematics/**/*.json", "src/schematics/**/*.template"],
   "exclude": ["node_modules", "test", "build", "dist", "**/*spec.ts"]
 }

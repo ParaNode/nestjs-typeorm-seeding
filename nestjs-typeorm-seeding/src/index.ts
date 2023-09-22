@@ -1,1 +1,3 @@
-export * from './typeorm-seeding.module'
+export * from './factory';
+export * from './seeder';
+export * from './seeder.module';

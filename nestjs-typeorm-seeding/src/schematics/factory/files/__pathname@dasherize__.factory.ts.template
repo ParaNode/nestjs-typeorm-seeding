@@ -1,0 +1,10 @@
+import { IFactory, EntityFactory } from '@paranode/nestjs-typeorm-seeding';
+import { Faker } from '@faker-js/faker';
+
+@EntityFactory(YourEntity)
+export class <%= classify(fullName) %>Factory implements IFactory<YourEntity> {
+
+  generate(faker: Faker): YourEntity {
+    // should return new entity instance
+  }
+}
